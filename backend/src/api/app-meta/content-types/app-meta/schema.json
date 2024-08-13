@@ -1,0 +1,28 @@
+{
+  "kind": "singleType",
+  "collectionName": "app_metas",
+  "info": {
+    "singularName": "app-meta",
+    "pluralName": "app-metas",
+    "displayName": "app_meta",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "seo": {
+      "type": "dynamiczone",
+      "components": [
+        "shared.seo"
+      ]
+    },
+    "social_media_meta": {
+      "type": "dynamiczone",
+      "components": [
+        "shared.meta-social"
+      ]
+    }
+  }
+}

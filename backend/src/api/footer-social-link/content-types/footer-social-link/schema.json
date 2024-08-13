@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "footer_social_links",
+  "info": {
+    "singularName": "footer-social-link",
+    "pluralName": "footer-social-links",
+    "displayName": "footer_social_links"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "social_media": {
+      "type": "dynamiczone",
+      "components": [
+        "link.anchor"
+      ]
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_component_month_summaries",
+  "info": {
+    "displayName": "month_summary"
+  },
+  "options": {},
+  "attributes": {
+    "monthSummaryLabel": {
+      "type": "string"
+    },
+    "month": {
+      "type": "string"
+    },
+    "visitsLabel": {
+      "type": "string"
+    },
+    "visitsCount": {
+      "type": "string"
+    },
+    "salesLabel": {
+      "type": "string"
+    },
+    "salesCount": {
+      "type": "string"
+    },
+    "ordersLabel": {
+      "type": "string"
+    },
+    "ordersCount": {
+      "type": "string"
+    },
+    "monthGoalCount": {
+      "type": "string"
+    },
+    "monthGoalLabel": {
+      "type": "string"
+    }
+  }
+}

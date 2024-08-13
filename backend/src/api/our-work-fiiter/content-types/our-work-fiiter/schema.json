@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "our_work_fiiters",
+  "info": {
+    "singularName": "our-work-fiiter",
+    "pluralName": "our-work-fiiters",
+    "displayName": "our_work_fiiter"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "filter": {
+      "type": "string"
+    },
+    "our_work_list": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::our-work-list.our-work-list",
+      "mappedBy": "our_work_fiiter"
+    }
+  }
+}

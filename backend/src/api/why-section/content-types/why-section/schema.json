@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "why_sections",
+  "info": {
+    "singularName": "why-section",
+    "pluralName": "why-sections",
+    "displayName": "why_section",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heading": {
+      "type": "text"
+    },
+    "actionBtn": {
+      "type": "dynamiczone",
+      "components": [
+        "link.anchor"
+      ]
+    }
+  }
+}

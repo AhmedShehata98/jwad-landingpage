@@ -1,0 +1,19 @@
+{
+  "kind": "singleType",
+  "collectionName": "sales_sections",
+  "info": {
+    "singularName": "sales-section",
+    "pluralName": "sales-sections",
+    "displayName": "sales_section",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    }
+  }
+}

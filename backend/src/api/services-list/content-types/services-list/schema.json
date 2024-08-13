@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "services_lists",
+  "info": {
+    "singularName": "services-list",
+    "pluralName": "services-lists",
+    "displayName": "services_list",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "video": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "videos"
+      ]
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "title": {
+      "type": "string"
+    }
+  }
+}

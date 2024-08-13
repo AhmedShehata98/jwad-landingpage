@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "why_lists",
+  "info": {
+    "singularName": "why-list",
+    "pluralName": "why-lists",
+    "displayName": "why_list",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "text"
+    },
+    "description": {
+      "type": "text"
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "color": {
+      "type": "string"
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "kind": "singleType",
+  "collectionName": "consultation_sections",
+  "info": {
+    "singularName": "consultation-section",
+    "pluralName": "consultation-sections",
+    "displayName": "consultation_section",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "subheading": {
+      "type": "text"
+    },
+    "heading": {
+      "type": "string"
+    },
+    "link": {
+      "type": "dynamiczone",
+      "components": [
+        "link.anchor"
+      ]
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

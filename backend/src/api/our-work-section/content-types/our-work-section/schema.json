@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "our_work_sections",
+  "info": {
+    "singularName": "our-work-section",
+    "pluralName": "our-work-sections",
+    "displayName": "our_work_section"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "subheading": {
+      "type": "text"
+    }
+  }
+}

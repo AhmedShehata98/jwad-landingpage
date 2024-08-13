@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sales_lists",
+  "info": {
+    "singularName": "sales-list",
+    "pluralName": "sales-lists",
+    "displayName": "sales_list"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "sales_card": {
+      "type": "dynamiczone",
+      "components": [
+        "component.month-summary"
+      ]
+    }
+  }
+}

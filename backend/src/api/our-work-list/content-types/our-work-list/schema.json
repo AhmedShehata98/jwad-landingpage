@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "our_work_lists",
+  "info": {
+    "singularName": "our-work-list",
+    "pluralName": "our-work-lists",
+    "displayName": "our_work_list",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tile": {
+      "type": "text"
+    },
+    "description": {
+      "type": "text"
+    },
+    "media_item": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "our_work_fiiter": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::our-work-fiiter.our-work-fiiter",
+      "inversedBy": "our_work_list"
+    },
+    "video": {
+      "allowedTypes": [
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
