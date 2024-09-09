@@ -188,7 +188,7 @@ export type PortfolioCardType = {
     data: IPortfolioFilter;
   };
 };
-type PortfolioListType = IStrapiBaseAttributes & PortfolioCardType & {};
+export type PortfolioListType = IStrapiBaseAttributes & PortfolioCardType & {};
 type ConsultationSectionType = IStrapiBaseAttributes & {
   subheading: string;
   heading: string;

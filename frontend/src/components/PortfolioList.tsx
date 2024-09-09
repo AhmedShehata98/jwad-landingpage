@@ -3,6 +3,7 @@ import {
   getPortfolioFilters,
   getPortfolioList,
   PortfolioCardType,
+  PortfolioListType,
 } from "@/services/api";
 import React, { useCallback, useState } from "react";
 import PortfolioCard from "./PortfolioCard";
@@ -14,19 +15,29 @@ import PortfolioGalleryCard from "./PortfolioGalleryCard";
 import PortfolioGalleryModal from "./PortfolioGalleryModal";
 import PortfolioVideoModal from "./PortfolioVideoModal";
 import PortfolioSkeletonCard from "./PortfolioSkeletonCard";
+import { IStrapiData, IStrapiResponse } from "@/types/strapi";
 
 const initialPaginationValues = {
   offset: 1,
   limit: 3,
 };
-const PortfolioList = () => {
-  const [selectedFilter, setSelectedFilter] = useState("all");
-  const [paginationOffset, setPaginationOffset] = useState(
-    initialPaginationValues.offset
-  );
-  const [paginationLimit, setPaginationLimit] = useState(
-    initialPaginationValues.limit
-  );
+
+const useInfinitePortfolioQuery = ({
+  paginationLimit,
+  paginationOffset,
+  selectedFilter,
+}: {
+  selectedFilter: string;
+  paginationOffset: number;
+  paginationLimit: number;
+}) => {
+  const [infiniteData, setInfiniteData] = useState<
+    IStrapiData<PortfolioListType>[]
+  >([]);
+  const handleResetData = () => {
+    setInfiniteData([]);
+  };
+
   const { data: portfolioList, isLoading: isLoadingPortfolioList } = useSWR(
     [swrKeys.portfolioList, selectedFilter, paginationOffset, paginationLimit],
     () =>
@@ -37,8 +48,46 @@ const PortfolioList = () => {
       }),
     {
       keepPreviousData: true,
+      onSuccess: (data) => {
+        setInfiniteData((prev) => [...prev, ...data.data]);
+      },
     }
   );
+
+  return {
+    data: infiniteData,
+    meta: portfolioList?.meta,
+    isLoadingPortfolioList,
+    handleResetData,
+  };
+};
+
+const PortfolioList = () => {
+  const [selectedFilter, setSelectedFilter] = useState("all");
+  const [paginationOffset, setPaginationOffset] = useState(
+    initialPaginationValues.offset
+  );
+  const [paginationLimit, setPaginationLimit] = useState(
+    initialPaginationValues.limit
+  );
+  const { data, isLoadingPortfolioList, meta, handleResetData } =
+    useInfinitePortfolioQuery({
+      paginationLimit,
+      paginationOffset,
+      selectedFilter,
+    });
+  // const { data: portfolioList, isLoading: isLoadingPortfolioList } = useSWR(
+  //   [swrKeys.portfolioList, selectedFilter, paginationOffset, paginationLimit],
+  //   () =>
+  //     getPortfolioList({
+  //       query: selectedFilter,
+  //       offset: paginationOffset,
+  //       limit: paginationLimit,
+  //     }),
+  //   {
+  //     keepPreviousData: true,
+  //   }
+  // );
   const { data: portfolioFilters, isLoading: isLoadingPortfolioFilters } =
     useSWR(swrKeys.portfolioFilter, () => getPortfolioFilters());
 
@@ -71,11 +120,11 @@ const PortfolioList = () => {
   };
 
   const handleSeeMore = useCallback(() => {
-    if (portfolioList?.meta) {
-      if (paginationOffset >= portfolioList?.meta.pagination.total) return;
+    if (meta) {
+      if (paginationOffset >= meta.pagination.total) return;
     }
     setPaginationOffset((o) => (o += 1));
-  }, [portfolioList]);
+  }, [meta]);
 
   return (
     <>
@@ -123,7 +172,7 @@ const PortfolioList = () => {
           </>
         )}
         {!isLoadingPortfolioList &&
-          portfolioList?.data?.map((portfolio) => {
+          data?.map((portfolio) => {
             if (portfolio.attributes.our_work_fiiter.data == null) return null;
 
             if (
@@ -171,8 +220,7 @@ const PortfolioList = () => {
           type="button"
           className={twc(
             "px-4 py-2 btn border-[#181818]",
-            portfolioList?.meta.pagination.pageCount === paginationOffset &&
-              "!hidden"
+            meta?.pagination.pageCount === paginationOffset && "!hidden"
           )}
           onClick={handleSeeMore}
         >
